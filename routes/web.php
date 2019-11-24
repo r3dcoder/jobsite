@@ -18,12 +18,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
+Route::get('applicant/{id}/profile', 'HomeController@profile')->name('Profile');
 
 
 Route::group(['prefix' => 'applicant',  'middleware' => 'applicant'], function()
 {
-	Route::get('/{id}/profile', 'ApplicantController@profile')->name('Profile');
+	// Route::get('/{id}/profile', 'ApplicantController@profile')->name('Profile');
 	Route::get('/{id}/editprofile', 'ApplicantController@edit_profile')->name('editProfile');
 	Route::post('/{id}/editprofile', 'ApplicantController@edit_profile_post')->name('editProfilePost');
 	Route::get('/{id}/apply', 'ApplicantController@apply')->name('ApplyPost');

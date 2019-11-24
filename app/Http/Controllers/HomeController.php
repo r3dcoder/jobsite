@@ -68,5 +68,14 @@ class HomeController extends Controller
         $jobpost->user_id = Auth::id();
         $jobpost->save();
         return redirect('/company/dashboard')->with('success', 'Directory successfully created');
+    }
+
+    public function profile( $id){
+        $profile = User::where('id', $id)->first();
+        
+        if($profile->user_type==0)
+        {
+            return view('user.profile', compact('profile'));
+        }
     }   
 }

@@ -67,13 +67,4 @@ class ApplicantController extends Controller
     }
     public function apply_post($id){
     }
-
-    public function profile( $id){
-        $profile = User::where('id', $id)->first();
-        
-        if($profile->user_type==0)
-        {
-            return view('user.profile', compact('profile'));
-        }
-    }
 }
