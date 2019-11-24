@@ -3,9 +3,16 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
+
         <div class="col-md-8">
             <div class="card">
                 <!-- <h2 style="padding: 20px">Available Job</h2> -->
+
+                @if(Session::has('success'))
+                    <div class="alert alert-success">
+                        {{ Session::get('success') }}
+                    </div>
+                @endif
                 <div class="card-header">Job Available</div>
 
                 <div class="card-body">
@@ -15,23 +22,17 @@
                         </div>
                     @endif
 
-
-                    @if(Session::has('success'))
-                            <div class="alert alert-success">
-                                {{ Session::get('success') }}
-                            </div>
-                        @endif
-                        @if($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach($errors->all() as $error)
-                                        <li>
-                                            {{ $error }}
-                                        </li>
-                                        @endforeach
-                                </ul>
-                            </div>
-                        @endif
+                    @if($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach($errors->all() as $error)
+                                    <li>
+                                        {{ $error }}
+                                    </li>
+                                    @endforeach
+                            </ul>
+                        </div>
+                    @endif
 
             @foreach($jobposts as $post)
             <div class="card-preview" style="padding-top: 5px">

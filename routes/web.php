@@ -18,30 +18,14 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-// Route::get('/user/{id}/profile', 'HomeController@profile')->name('Profile');
-
-// Route::get('/user/{id}/editprofile', 'HomeController@edit_profile')->name('editProfile');
-// Route::post('/user/{id}/editprofile', 'HomeController@edit_profile_post')->name('editProfilePost');
-
-// Route::get('/user/{id}/apply', 'HomeController@apply')->name('ApplyPost');
-// Route::post('/user/{id}/apply', 'HomeController@apply_post')->name('ApplyPost');
-
 
 Route::prefix('user')->group(function (){
-	Route::get('/{id}/profile', 'HomeController@profile')->name('Profile');
-
-	Route::get('/{id}/editprofile', 'HomeController@edit_profile')->name('editProfile');
-	Route::post('/{id}/editprofile', 'HomeController@edit_profile_post')->name('editProfilePost');
-
-	Route::get('/{id}/apply', 'HomeController@apply')->name('ApplyPost');
-	Route::post('/{id}/apply', 'HomeController@apply_post')->name('ApplyPost');
+	Route::get('/{id}/profile', 'ApplicantController@profile')->name('Profile');
+	Route::get('/{id}/editprofile', 'ApplicantController@edit_profile')->name('editProfile');
+	Route::post('/{id}/editprofile', 'ApplicantController@edit_profile_post')->name('editProfilePost');
+	Route::get('/{id}/apply', 'ApplicantController@apply')->name('ApplyPost');
+	Route::post('/{id}/apply', 'ApplicantController@apply_post')->name('ApplyPost');
 });
-
-
-// Route::get('/company/dashboard', 'HomeController@company_dashboard')->name('company_dashboard');
-
-// Route::get('/company/newpost', 'HomeController@newPost')->name('new_post');
-// Route::post('/company/newpost', 'HomeController@newPostStore')->name('new_post_store');
 
 Route::prefix('/company')->group(function (){
 	Route::get('/dashboard', 'HomeController@company_dashboard')->name('company_dashboard');
