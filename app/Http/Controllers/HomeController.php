@@ -48,23 +48,13 @@ class HomeController extends Controller
     }
 
     public function company_dashboard(){
-        if(Auth::user()->user_type){
-            return view('company.dashboard');
-        }
-        else{
-            return response('Unauthorized action.', 403);
-        }
+
+        return view('company.dashboard');
     }
 
     public function newPost(){
 
-        if(Auth::user()->user_type){
-            
-            return view('company.new_post');
-        }
-        else{
-            return response('Unauthorized action.', 403);
-        }
+        return view('company.new_post');
     }
 
     public function newPostStore(PostRequest $request){

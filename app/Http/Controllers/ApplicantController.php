@@ -19,13 +19,8 @@ class ApplicantController extends Controller
     }
 
     public function edit_profile($id){
-        if(Auth::user()->user_type==0){
-            $profile = User::where('id', Auth::id())->first();
-            return view('user.edit_profile', compact('profile'));
-        }
-        else{
-            return response('Unauthorized action.', 403);
-        }
+        $profile = User::where('id', Auth::id())->first();
+        return view('user.edit_profile', compact('profile'));
     }
 
     public function edit_profile_post(ProfileRequest $request, $id){
@@ -81,5 +76,4 @@ class ApplicantController extends Controller
             return view('user.profile', compact('profile'));
         }
     }
-
 }
