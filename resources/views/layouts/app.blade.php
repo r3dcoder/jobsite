@@ -20,7 +20,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
+<!--     {{Route::current()->getName()}}
+ -->    <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -50,9 +51,22 @@
                             @endif
                         @else
                             @if(Auth::user()->user_type==1)
+                            
+                           
+
                             <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('new_post') }}"> {{ __('Create Job Post') }}</a>
+                                    <a class="nav-link" href="{{ route('new_post') }}"> {{ __('Create Post') }}</a>
+
                             </li>
+
+                            
+                            @if(Route::current()->getName() != 'home')
+                            <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('/home') }}"> {{ __('Dashboard') }}</a>
+
+                            </li>
+                            @endif
+                            
                             @else
                             <li class="nav-item">
                                     <a class="nav-link" href="{{ route('editProfile', Auth::user()->id)}}"> {{ __('Edit Your Profile') }}</a>
