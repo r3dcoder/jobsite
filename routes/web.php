@@ -38,3 +38,6 @@ Route::group(['prefix' => 'company',  'middleware' => 'company'], function()
 	Route::get('/newpost', 'HomeController@newPost')->name('new_post');
 	Route::post('/newpost', 'HomeController@newPostStore')->name('new_post_store');
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
