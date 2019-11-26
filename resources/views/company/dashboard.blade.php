@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @php
+$i=1;
 $applicant = App\Appliedlist::all(); 
 @endphp
 @section('content')
@@ -20,7 +21,7 @@ $applicant = App\Appliedlist::all();
                     <table class="table">
                         <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>Ser. No</th>
                             <th>Title</th>
                             <th>Created at</th>
                             <th>Applicant Name</th>
@@ -29,10 +30,12 @@ $applicant = App\Appliedlist::all();
                         </tr>
                         </thead>
                         <tbody>
+                            
                         @foreach(Auth::user()->jobposts as $post)
                             <tr>
-                                <td>{{ $post->id }}</td>
-                                <td class="text-nowrap"><a href="#">{{ $post->Job_title }}</a></td>
+                                <td> {{$i++}}</td>
+                                <!-- <td>{{ $post->id }}</td> -->
+                                <td class="text-nowrap"><a href="{{ route('singlePost', $post->id)}}">{{ $post->Job_title }}</a></td>
                                 <td>{{ \Carbon\Carbon::parse($post->created_at)->diffForHumans()}}
                                     
                                 </td>
@@ -40,10 +43,7 @@ $applicant = App\Appliedlist::all();
                                     @php
                                         $cnt= App\Jobpost::find($post->id)->appliedlists->count();
                                         $applicants= App\Jobpost::find($post->id)->appliedlists;
-                                        $i=0;
-
-
-
+                    
                                     @endphp
 
                                     @foreach($applicants as $applicant)                                   

@@ -13,7 +13,7 @@
                         {{ Session::get('success') }}
                     </div>
                 @endif
-                <div class="card-header">Job Available</div>
+                <div class="card-header"><h3>All job post by {{$posts->first()->user->business_name}}</h3></div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -34,7 +34,7 @@
                         </div>
                     @endif
 
-            @foreach($jobposts as $post)
+            @foreach($posts as $post)
             <div class="card-preview" style="padding-top: 5px">
                 <a href="#">
                     <h2 class="post-title">
@@ -42,7 +42,7 @@
                     </h2>
                 </a>
                 <p class="post-meta">Posted by
-                    <a href="{{ route('companyPost', $post->user->id)}}">{{ $post->user->business_name }}</a>
+                    <a href="{{ $post->user->business_name }}">{{ $post->user->business_name }}</a>
                     on {{ $post->created_at->format('j F, Y')}}
                     
                 </p>
@@ -61,15 +61,19 @@
                 </p>
 
                 <!-- <button href = "{{ route('ApplyPost', $post->id) }}" class="btn btn-primary">Apply</buttron> -->
-                @php
-                    $applicant = App\Appliedlist::where('jobpost_id', $post->id)->where('user_id', Auth::user()->id)->first(); 
-                @endphp
-                @if($applicant==null)
-                <form method="post" action=" {{ route('ApplyPost', $post->id ) }}">
-                    <a href="{{ route('ApplyPost', $post->id ) }}" class="btn btn-primary"> Apply </a>
-                </form>
-                @else
-                    <a href="#" class="btn btn-primary"> You have already Applied </a>
+                @if(Auth::user()->user_type==0)
+
+                    @php
+                        $applicant = App\Appliedlist::where('jobpost_id', $post->id)->where('user_id', Auth::user()->id)->first(); 
+                    @endphp
+                    @if($applicant==null)
+                    <form method="post" action=" {{ route('ApplyPost', $post->id ) }}">
+                        <a href="{{ route('ApplyPost', $post->id ) }}" class="btn btn-primary"> Apply </a>
+                    </form>
+                    @else
+                        <a href="#" class="btn btn-primary"> You have already Applied </a>
+                    @endif
+                
                 @endif
 
             </div>

@@ -8,12 +8,8 @@
             <div class="card">
                 <!-- <h2 style="padding: 20px">Available Job</h2> -->
 
-                @if(Session::has('success'))
-                    <div class="alert alert-success">
-                        {{ Session::get('success') }}
-                    </div>
-                @endif
-                <div class="card-header">Job Available</div>
+               
+                <div class="card-header"></div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -34,7 +30,7 @@
                         </div>
                     @endif
 
-            @foreach($jobposts as $post)
+            
             <div class="card-preview" style="padding-top: 5px">
                 <a href="#">
                     <h2 class="post-title">
@@ -60,21 +56,9 @@
                     Country: {{ $post->Country }}
                 </p>
 
-                <!-- <button href = "{{ route('ApplyPost', $post->id) }}" class="btn btn-primary">Apply</buttron> -->
-                @php
-                    $applicant = App\Appliedlist::where('jobpost_id', $post->id)->where('user_id', Auth::user()->id)->first(); 
-                @endphp
-                @if($applicant==null)
-                <form method="post" action=" {{ route('ApplyPost', $post->id ) }}">
-                    <a href="{{ route('ApplyPost', $post->id ) }}" class="btn btn-primary"> Apply </a>
-                </form>
-                @else
-                    <a href="#" class="btn btn-primary"> You have already Applied </a>
-                @endif
 
             </div>
             <hr>
-            @endforeach
                 </div>
             </div>
         </div>
