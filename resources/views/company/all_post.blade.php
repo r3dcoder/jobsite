@@ -42,7 +42,7 @@
                     </h2>
                 </a>
                 <p class="post-meta">Posted by
-                    <a href="{{ route('companyPost', $post->user()->id) }}">{{ $post->user->business_name }}</a>
+                    <a href="{{ route('companyPost', $post->user->id) }}">{{ $post->user->business_name }}</a>
                     on {{ $post->created_at->format('j F, Y')}}
                     
                 </p>
