@@ -68,7 +68,11 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        @if(Auth::user()->user_type)
+                                <a href="{{ route('company_dashboard') }}">Dashboard</a>
+                        @else
+                            <a href="{{ url('/home') }}">Brouse Job</a>    
+                        @endif
                     @else
                         <a href="{{ route('login') }}">Login</a>
                         <a href="{{ route('company_register') }}">Want Hire</a>
@@ -84,7 +88,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Welcome
+                    <h6>A place that connect between employee and employer</h6>
                 </div>
           
             </div>
