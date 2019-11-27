@@ -68,6 +68,11 @@
                             @endif
                             
                             @else
+                            <form method="post" action="{{ route('search') }}">
+                                @csrf
+                            <input type="text" class="form-controller" id="search" name="search" placeholder="Software Engineer"></input>
+                            </form>
+                            <li class="nav-item">
                             <li class="nav-item">
                                     <a class="nav-link" href="{{ route('editProfile', Auth::user()->id)}}"> {{ __('Edit Your Profile') }}</a>
                             </li>

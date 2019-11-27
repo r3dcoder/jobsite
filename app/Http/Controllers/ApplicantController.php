@@ -67,4 +67,15 @@ class ApplicantController extends Controller
     }
     public function apply_post($id){
     }
+
+    public function search(Request $request){
+
+        $value = $request['search'];
+        $jobposts = Jobpost::where('Job_title','LIKE','%'.$value.'%')
+                ->orWhere('Job_description','LIKE','%'.$value.'%')
+                ->get();
+        return view('home', compact('jobposts'));
+    }
+
+
 }

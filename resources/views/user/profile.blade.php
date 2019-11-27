@@ -27,7 +27,7 @@
                         @if($profile->CV!=null)
                         <div class="form-group" style="padding: 10px">
                                 <label >CV: </label> 
-                                <a href="{{asset('doc/'.$profile->CV)}}" style="width:70px; height:60px;">{{$profile->CV}}</a>                         
+                                <a href="{{asset('doc/'.$profile->CV)}}" style="width:90px; height:60px;">{{$profile->CV}}</a>                         
                          </div> 
                          @endif
                          @if(Auth::user()->id==$profile->id)

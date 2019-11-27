@@ -30,6 +30,9 @@ Route::group(['prefix' => 'applicant',  'middleware' => 'applicant'], function()
 	Route::post('/{id}/editprofile', 'ApplicantController@edit_profile_post')->name('editProfilePost');
 	Route::get('/{id}/apply', 'ApplicantController@apply')->name('ApplyPost');
 	Route::post('/{id}/apply', 'ApplicantController@apply_post')->name('ApplyPost');
+
+	// Route::get('/','SearchController@index');
+     Route::post('/search','ApplicantController@search')->name('search');
 });
 
 
