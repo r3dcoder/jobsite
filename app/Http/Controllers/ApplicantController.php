@@ -71,8 +71,11 @@ class ApplicantController extends Controller
     public function search(Request $request){
 
         $value = $request['search'];
+        $valueUp    = strtoupper($value);
+        $valueLower = strtolower($value);
+
         $jobposts = Jobpost::where('Job_title','LIKE','%'.$value.'%')
-                ->orWhere('Job_description','LIKE','%'.$value.'%')
+                ->orWhere('Job_description','LIKE','%' .($valueUp || $valueLower) .'%')
                 ->get();
         return view('home', compact('jobposts'));
     }
