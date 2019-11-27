@@ -2,6 +2,7 @@
 @php
 $i=1;
 $applicant = App\Appliedlist::all(); 
+$jobposts = App\Jobpost::orderBy('created_at', 'desc')->where('user_id', Auth::user()->id)->get();
 @endphp
 @section('content')
 <div class="container">

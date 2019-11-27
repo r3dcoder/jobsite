@@ -35,8 +35,8 @@ class HomeController extends Controller
             return view('home', compact('jobposts'));
         }
         else{
-            $jobposts = Jobpost::orderBy('created_at', 'desc')->where('user_id', Auth::user()->id)->get();
-            return view('company.dashboard', compact('jobposts'));
+            
+            return view('company.dashboard');
         }
     }
     public function company_dashboard(){
