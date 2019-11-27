@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
 use App\Http\Requests\ProfileRequest;
-use App\JobPost;
+use App\Jobpost;
 use App\User;
 use App\Appliedlist;
 use Illuminate\Support\Facades\Validator;
