@@ -31,7 +31,7 @@ $applicant = App\Appliedlist::all();
                         </thead>
                         <tbody>
                             
-                        @foreach(Auth::user()->jobposts as $post)
+                        @foreach($jobposts as $post)
                             <tr>
                                 <td> {{$i++}}</td>
                                 <!-- <td>{{ $post->id }}</td> -->

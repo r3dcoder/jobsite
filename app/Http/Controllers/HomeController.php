@@ -26,15 +26,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $jobposts = Jobpost::orderBy('created_at', 'desc')->get();
+        
         //$jobposts = JobPost::find(2);
         //$name = $jobposts->user->first_name;
         //dd($jobposts);
         if(Auth::user()->user_type==0){
+            $jobposts = Jobpost::orderBy('created_at', 'desc')->get();
             return view('home', compact('jobposts'));
         }
         else{
-            return view('company.dashboard');
+            $jobposts = Jobpost::orderBy('created_at', 'desc')->where('user_id', Auth::user()->id)->get();
+            return view('company.dashboard', compact('jobposts'));
         }
     }
     public function company_dashboard(){
